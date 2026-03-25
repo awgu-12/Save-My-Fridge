@@ -40,7 +40,7 @@
 -유통기한 지난 재료 표기(폐기)
 -메모추가
 -보관 위치 설정(냉장/냉동)
-3. Use case list
+#### 3. Use case list
 1)Login
 | 구분 | 상세 |
 | :--- | :--- |
@@ -113,7 +113,7 @@
 | Actor | User | 
 | Description | 식재료에 라 보관 장소를 '냉장' 또는 '냉동'으로 지정, 관리한다. |
 
-4. Concept of operation
-5. Problem statement
-6. Glossary
-7. References
+#### 4. Concept of operation
+#### 5. Problem statement
+#### 6. Glossary
+#### 7. References
