@@ -24,8 +24,8 @@
 | 6 | Glossary | 7 |
 | 7 | References | 7 |
 
-1. Business purpose
-2. System context diagram
+#### 1. Business purpose
+#### 2. System context diagram
 <img width="1897" height="449" alt="스크린샷 2026-03-26 003436" src="https://github.com/user-attachments/assets/a02d75b3-cf55-400a-bcb7-194f0a9fb903" />
 
 -Login(간단 로그인)
