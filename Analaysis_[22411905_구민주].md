@@ -39,8 +39,25 @@
 #### 2. Use case analysis
 <img width="1240" height="1183" alt="스크린샷 2026-04-30 151452" src="https://github.com/user-attachments/assets/ba557071-2370-4946-91e4-20b7592a20b1" />
 Conceptualization 보고서에서 작성했던 Use case list를 바탕으로 그려진 Use case diagram으로, starUML을 이용하여 액터(User)가 시스템의 12가지 주요 기능들에 어떤 식으로 접근하고, 각 Use case들이 상호작용하는 관계를 구체적으로 지정하였다. 특히 식재료 등록, 수정, 삭제 및 유통기한 자동 판별 기능을 중심으로 사용자의 관리 흐름을 시각화하였다.
+
 #### 3. Domain analysis
-1)
+1) User
+사용자에 관련된 클래스이다. 시스템 접속을 위한 계정 정보와 사용자 이름을 관리하는 클래스이다.
+
+2) Inventory
+전체 재고를 관리하는 클래스이다. 현재 보관 중인 식재료의 총 개수와 업데이트 정보를 저장하는 클래스이다.
+
+3) Ingredient
+식재료 상세 정보를 가지는 클래스이다. 재료의 이름, 수량, 카테고리 등을 저장하고 관리하는 핵심 클래스이다.
+
+4) ExpirationManager
+유통기한을 관리하는 클래스이다. 현재 날짜와 비교하여 기한 임박 알림이나 폐기 여부를 판별하는 기능을 한다.
+
+5) StorageManager
+보관 위치 정보를 관리하는 클래스이다. 식재료가 냉장실 혹은 냉동실 중 어디에 위치하는지 저장하는 클래스이다.
+
+6) Memo
+부가 정보를 관리하는 클래스이다. 식재료에 대해 사용자가 별도로 기록한 메모 내용을 저장하고 있는 클래스이다.
 
 #### 4. User Interface prototype
 #### 5. Glossary
