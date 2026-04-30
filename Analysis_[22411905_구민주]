@@ -9,7 +9,8 @@
 
 | Revision date | Version # | Description | Author |
 | :--- | :--- | :--- | :--- |
-| 03/26/2026 | 0.1.0 | first writing | 구민주 |
+| 04/29/2026 | 0.1.0 | first writing | 구민주 |
+| 04/30/2026 | 0.1.1 | contents 5,6 writing | 구민주 |
 
 ### = Contents =
 | No. | Title |
@@ -38,3 +39,23 @@
 #### 2. Use case analysis
 #### 3. Domain analysis
 1)
+
+#### 4. User Interface prototype
+#### 5. Glossary
+| Term | Description |
+| :--- | :--- |
+| 사용자(User) | 냉장고 내 식재료를 등록, 수정, 삭제하며 관리하는 사용 |
+| 식재료 | 냉장고에 보관되는 품목으로 일므, 수량, 유토익한 등의 정보를 가진 물건 |
+| 보관 위치 | 식재료가 저장도니 물리적 장소 |
+| 유통기한 | 식재료를 안전하게 섭취할 수 있는 최대 기한 |
+| 카테고리 | 식재료의 종류에 따른 분류 |
+| 유통기한 관리 | 현재 날짜를 기준으로 재료의 신선도 상태를 판별하는 행위 |
+| 재고목록 | 사용자가 등록하여 현재 시스템에 저장되어 있는 모든 식재료 데이터 |
+| 메 | 특정 식재료에 대해 사용자가 추가로 기록한 정보 |
+
+#### 6.. References
+사용자, 보관 위치, 유통기한 — https://www.foodsafetykorea.go.kr/
+식재료, 재고 목록 - https://www.naqs.go.kr/hp/main/main.do
+Android Developers Documentation (UI Components) — https://developer.android.com/docs
+Google Material Design 3 (UI/UX Guidelines) — https://m3.material.io
+StarUML Documentation (Diagramming Standards) — http://staruml.io/docs
