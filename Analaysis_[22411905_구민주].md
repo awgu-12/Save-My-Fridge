@@ -37,7 +37,7 @@
 각 기능들을 구체적으로 분석하여 명확하게 정의할 것이다. 또한, 유통기한 관리, 재료 등록 및 수정 등의 기능을 실제로 구현하기 위해 필요한 핵심 클래스들을 도출하고 데이터 간의 관계를 분석하는 것을 목표로 한다.
 
 #### 2. Use case analysis
-//여기 사진 삽입
+<img width="1240" height="1183" alt="스크린샷 2026-04-30 151452" src="https://github.com/user-attachments/assets/ba557071-2370-4946-91e4-20b7592a20b1" />
 Conceptualization 보고서에서 작성했던 Use case list를 바탕으로 그려진 Use case diagram으로, starUML을 이용하여 액터(User)가 시스템의 12가지 주요 기능들에 어떤 식으로 접근하고, 각 Use case들이 상호작용하는 관계를 구체적으로 지정하였다. 특히 식재료 등록, 수정, 삭제 및 유통기한 자동 판별 기능을 중심으로 사용자의 관리 흐름을 시각화하였다.
 #### 3. Domain analysis
 1)
