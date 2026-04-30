@@ -54,8 +54,8 @@
 | 메 | 특정 식재료에 대해 사용자가 추가로 기록한 정보 |
 
 #### 6.. References
-사용자, 보관 위치, 유통기한 — https://www.foodsafetykorea.go.kr/
-식재료, 재고 목록 - https://www.naqs.go.kr/hp/main/main.do
-Android Developers Documentation (UI Components) — https://developer.android.com/docs
-Google Material Design 3 (UI/UX Guidelines) — https://m3.material.io
-StarUML Documentation (Diagramming Standards) — http://staruml.io/docs
+사용자, 보관 위치, 유통기한 — <https://www.foodsafetykorea.go.kr/>
+식재료, 재고 목록 - <https://www.naqs.go.kr/hp/main/main.do>
+Android Developers Documentation (UI Components) — <https://developer.android.com/docs>
+Google Material Design 3 (UI/UX Guidelines) — <https://m3.material.io>
+StarUML Documentation (Diagramming Standards) — <http://staruml.io/docs>
