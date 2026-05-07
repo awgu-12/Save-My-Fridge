@@ -242,23 +242,58 @@ GENERAL CHARACTERISTICS
 MAIN SUCCESS SCENARIO
 | step | Action |
 | :--- | :--- |
-| s | 사용자가 메인 목록 화면 요청 |
-| 1 | 사용자가 시스테므이 메인 화면에 접속 시 해당 use case 시작 |
-| 2 | 시스템은 서버로부터 해당 사용자의 전체 식재료 데이터를 요청 |
-| 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 |
-| 4 | 전체 리스트를 사용자가 확인 가능할 때 해당 use case 종료 |
+| s | 사용자가 검색창에 찾고자 하는 재료의 이름을 입력 |
+| 1 | 사용자가 검색창을 터치하고 키워드 입력 시 use case 시작 |
+| 2 | 시스템은 입력된 글자가 포함된 재료 명칭을 실시간으로 검색한다 |
+| 3 | 시스템은 전체 목록 중 조건에 일치하는 항목들만 남기고 나머지는 숨긴다. |
+| 4 | 이 User case는 사용자가 원하는 재료를 찾아낼 시 종료 |
 EXTENSION SCENARIOS
 | step | Branching Action |
 | :--- | :--- |
-| 2 | 2a. 데이터 베이스에 등록된 식재료가 하나도 없을 경우<br/r> ...2a1. 시스템은 "보관 중인 재료가 없습니다"라는 문구와 함께 비어있는 화면을 보여준다. |
+| 2 | 2a. 입력한 검색어와 일치하는 식재료가 목록에 없는 경우<br/r> ...2a1. 시스템은 "검색 결과가 없습니다"라는 메시지를 화면에 표시한다. |
 RELATED INFORMATION
 | Term | Description |
 | :--- | :---|
-| Performance | <2 seconds |
-| Frequency | 앱 이용 시 가장 빈번하게 발생(always) |
+| Performance | <1 seconds |
+| Frequency | 저장된 재료가 많을 때 주로 발생(frequent) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
+Use case #7 : Category Filter
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 사용자가 검색어를 입력하여 특정 식재료를 빠르게 찾는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 메인 목록 화면에 접속 상태. |
+| Trigger | 사용자가 상단 검색창에 텍스트 입력 시 |
+| Success Post Conditon| 입력한 검색어가 포함된 식재료들만 화면에 필터링되어 나타난다. |
+| Failed Post Condition | 검색 결과가 없을 경우 해당 내용을 사용자에게 알린다 |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 검색창에 찾고자 하는 재료의 이름을 입력 |
+| 1 | 사용자가 검색창을 터치하고 키워드 입력 시 use case 시작 |
+| 2 | 시스템은 입력된 글자가 포함된 재료 명칭을 실시간으로 검색한다 |
+| 3 | 시스템은 전체 목록 중 조건에 일치하는 항목들만 남기고 나머지는 숨긴다. |
+| 4 | 이 User case는 사용자가 원하는 재료를 찾아낼 시 종료 |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 입력한 검색어와 일치하는 식재료가 목록에 없는 경우<br/r> ...2a1. 시스템은 "검색 결과가 없습니다"라는 메시지를 화면에 표시한다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <1 seconds |
+| Frequency | 저장된 재료가 많을 때 주로 발생(frequent) |
+| <Concurrency> | 제한 없음 |
+| Due Date |
 #### 3. Domain analysis
 1) User
 사용자에 관련된 클래스이다. 시스템 접속을 위한 계정 정보와 사용자 이름을 관리하는 클래스이다.
