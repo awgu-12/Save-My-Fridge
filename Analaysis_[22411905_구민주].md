@@ -485,19 +485,19 @@ RELATED INFORMATION
 
 #### 4. User Interface prototype
 1) Login
-<img width="832" height="1256" alt="스크린샷 2026-04-29 110759" src="https://github.com/user-attachments/assets/b05595f5-2c74-456f-803d-6eda0f95cca8" />
+<img width="400" height="600" alt="스크린샷 2026-04-29 110759" src="https://github.com/user-attachments/assets/b05595f5-2c74-456f-803d-6eda0f95cca8" />
 
 2) view all list & Exp. Date Warning & Identify Expired Item
-<img width="885" height="1292" alt="스크린샷 2026-05-08 033100" src="https://github.com/user-attachments/assets/be5b4add-e5c1-416d-acb7-c257a3db4aaa" />
+<img width="400" height="600" alt="스크린샷 2026-05-08 033100" src="https://github.com/user-attachments/assets/be5b4add-e5c1-416d-acb7-c257a3db4aaa" />
 
 3) Search by name
-<img width="896" height="1318" alt="스크린샷 2026-05-08 032958" src="https://github.com/user-attachments/assets/9ef3e37b-0a50-45a1-8b55-5043ee5fa41d" />
+<img width="400" height="600" alt="스크린샷 2026-05-08 032958" src="https://github.com/user-attachments/assets/9ef3e37b-0a50-45a1-8b55-5043ee5fa41d" />
 
 4) category filter
-<img width="881" height="1292" alt="스크린샷 2026-05-08 033953" src="https://github.com/user-attachments/assets/d222f4e2-d1f2-4cde-8741-17ecd3278c76" />
+<img width="400" height="600" alt="스크린샷 2026-05-08 033953" src="https://github.com/user-attachments/assets/d222f4e2-d1f2-4cde-8741-17ecd3278c76" />
 
 5) 재료 등록
-<img width="926" height="1307" alt="스크린샷 2026-05-08 032901" src="https://github.com/user-attachments/assets/55770d2d-df2f-493d-8591-8826a33766ff" />
+<img width="400" height="600" alt="스크린샷 2026-05-08 032901" src="https://github.com/user-attachments/assets/55770d2d-df2f-493d-8591-8826a33766ff" />
 
 
 6) 재료 내용 수정
