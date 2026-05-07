@@ -173,8 +173,7 @@ MAIN SUCCESS SCENARIO
 | s | 사용자가 수량 조절 버튼을 누른다. |
 | 1 | 이 User case는 사용자가 사용자가 특정 재료의 수량을 변경하고자 할 때 시작되다 . |
 | 2 | 사용자는 증감 버튼을 통해 원하는 수량으로 조절한다. |
-| 3 | 시스템은 실시간으로 변경된 수치를 데이터베이스에 업데이트한다. |
-| 4 | 화면에 수정된 수량이 정확히 표시되면 use case는 끝난다. |
+| 3 | 시스템은 실시간으로 변경된 수치를 데이터베이스에 업데이트하고 화면에 표시한다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
 | :--- | :--- |
@@ -207,10 +206,9 @@ MAIN SUCCESS SCENARIO
 | step | Action |
 | :--- | :--- |
 | s | 사용자가 메인 목록 화면 요청 |
-| 1 | 사용자가 시스테므이 메인 화면에 접속 시 해당 use case 시작 |
+| 1 | 사용자가 시스템의 메인 화면에 접속 시 해당 use case 시작 |
 | 2 | 시스템은 서버로부터 해당 사용자의 전체 식재료 데이터를 요청 |
-| 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 |
-| 4 | 전체 리스트를 사용자가 확인 가능할 때 해당 use case 종료 |
+| 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 & 출력 |
 EXTENSION SCENARIOS
 | step | Branching Action |
 | :--- | :--- |
@@ -270,30 +268,210 @@ GENERAL CHARACTERISTICS
 | Last Update | 2026-05-07 |
 | Status | Analysis |
 | Primary Actor | User |
-| Preconditions | 메인 목록 화면에 접속 상태. |
-| Trigger | 사용자가 상단 검색창에 텍스트 입력 시 |
-| Success Post Conditon| 입력한 검색어가 포함된 식재료들만 화면에 필터링되어 나타난다. |
-| Failed Post Condition | 검색 결과가 없을 경우 해당 내용을 사용자에게 알린다 |
+| Preconditions | 메인 목록 화면에 접속 상태 & 재료에 카테고리 설정이 되어 있어야 한다. |
+| Trigger | 사용자가 카테고리 아이콘/필터를 클릭할 경우 |
+| Success Post Conditon| 선택된 카테고리에 해당하는 식재료들만 선별되어 목록 출력 |
+| Failed Post Condition | 필터링 결과가 없을 경우 빈 화면과 함께 안내 문구 출력 |
 
 MAIN SUCCESS SCENARIO
 | step | Action |
 | :--- | :--- |
-| s | 사용자가 검색창에 찾고자 하는 재료의 이름을 입력 |
-| 1 | 사용자가 검색창을 터치하고 키워드 입력 시 use case 시작 |
-| 2 | 시스템은 입력된 글자가 포함된 재료 명칭을 실시간으로 검색한다 |
-| 3 | 시스템은 전체 목록 중 조건에 일치하는 항목들만 남기고 나머지는 숨긴다. |
-| 4 | 이 User case는 사용자가 원하는 재료를 찾아낼 시 종료 |
+| s | 사용자가 필터링하고 싶은 카테고리(예: 채소)를 선택한다. |
+| 1 | 사용자가 특정 카테고리 버튼을 누를 때 시작된다. |
+| 2 | 시스템은 전체 식재료 데이터 중 선택된 카테고리 속성값을 가진 데이터만 추출한다. |
+| 3 | 시스템은 추출된 데이터들로 목록 화면을 다시 구성하여 보여준다. |
+| 4 | 사용자가 카테고리별로 분류된 목록을 확인하면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
 | :--- | :--- |
-| 2 | 2a. 입력한 검색어와 일치하는 식재료가 목록에 없는 경우<br/r> ...2a1. 시스템은 "검색 결과가 없습니다"라는 메시지를 화면에 표시한다. |
+| 2 | 2a. 선택한 카테고리에 속한 식재료가 현재 냉장고에 하나도 없는 경우<br/r> ...2a1. 시스템은 "해당 카테고리에 등록된 재료가 없습니다"라고 표시한다. |
 RELATED INFORMATION
 | Term | Description |
 | :--- | :---|
 | Performance | <1 seconds |
-| Frequency | 저장된 재료가 많을 때 주로 발생(frequent) |
+| Frequency | 특정 용도의 재료를 찾을 때 자주 발생 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
+
+Use case #8 : Set Expiration Date
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 식재료의 안전한 소비를 위해 만료 날짜 정보를 입력하거나 수정하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-08 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 식재료 등록 또는 수정 화면이 활성화된 상태 |
+| Trigger | 사용자가 유통기한 입력란 또는 달력 아이콘을 클릭할 경우 |
+| Success Post Conditon| 선택한 날짜 정보가 해당 식재료 데이터에 정확히 저장된다. |
+| Failed Post Condition | 날짜를 선택하지 않고 취소할 경우 기존 날짜가 유지되거나 비어 있게 된다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 유통기한 설정을 위해 날짜 선택기(DatePicker)를 실행한다. |
+| 1 | 사용자가 날짜 입력 칸을 터치 시 시작 |
+| 2 | 시스템은 사용자에게 연/월/일 선택이 가능한 달력 UI를 제공한다. |
+| 3 | 사용자가 재료의 유통기한에 해당하는 날짜를 선택하고 '확인'을 누른다. |
+| 4 | 선택된 날짜가 화면에 표시되고 데이터로 확정되면 해당 use case는 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 3 | 3a. 사용자가 현재 이전의 날짜(이미 지난 날짜)를 선택하려고 할 경우<br/r> ...3a1. 시스템은 "이미 지난 날짜입니다. 다시 확인해주세요"라는 경고 메시지를 띄운다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <1 seconds |
+| Frequency | 모든 식재료 등록 시 반드시 발생 (high) |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #9 : Exp. Date Warning
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 유통기한 만료가 가까워진 식재료를 사용자에게 시각적으로 강조하여 알리는 기 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | System |
+| Preconditions | 시스템에 유통기한 정보가 입력 식재료가 존재해야 한다. |
+| Trigger | 사용자가 메인 목록 화면에 진입하거나 시스템 날짜가 갱신될 경우 |
+| Success Post Conditon| 유통기한이 3일 이내로 남은 재료 옆에 노란색 경고 아이콘이나 강조 문구가 표시 |
+| Failed Post Condition | 조건을 만족하는 재료가 없을 경우 평상시와 동일한 목록을 출력 |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 시스템이 전체 식재료의 유통기한 데이터를 확인한다. |
+| 1 | 사용자가 목록 조회를 요청하여 데이터를 로드할 때 시작된다. |
+| 2 | 시스템은 현재 날짜와 재료별 만료 날짜 사이의 잔여 기한을 계산한다. |
+| 3 | 잔여 기한이 3일 이하(0 < d <= 3)인 재료들에 대해 '임박' 플래그를 설정한다. |
+| 4 | User case 9번은 목록 출력 시 해당 재료들을 강조하면 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 3 | 3a. 등록된 모든 식재료의 유통기한이 3일보다 많이 남았을 경우<br/r> ...2a1. 시스템은 별도의 경고 표시 없이 일반적인 목록을 화면에 구성한다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <0.5 seconds |
+| Frequency | 메인 화면을 볼 때마다 백그라운드에서 실 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #10 : Identify Expired Item
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 유통기한이 이미 경과한 식재료를 자동으로 판별하여 사용자에게 폐기를 유도하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | System |
+| Preconditions | 시스템에 유통기한이 설정된 식재료 데이터가 존재해야 한다. |
+| Trigger | 시스템이 목록 데이터를 로드하거나 정기적인 날짜 업데이트가 발생할 경우 |
+| Success Post Conditon| 오늘 날짜를 기준으로 기한이 지난 재료를 '폐기 대상'으로 분류하고 빨간색으로 표시한다. |
+| Failed Post Condition | 모든 재료의 유통기한이 유효할 경우 일반적인 목록 상태를 유지 |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 시스템이 현재 날짜와 식재료별 유통기한을 비교한다. |
+| 1 | 해당 use case는 시스템이 메인 목록 화면을 구성하기 위해 데이터를 읽을 때 시작된다. |
+| 2 | 시스템은 유통기한 날짜가 오늘 날짜보다 이전(Date < Today)인 재료를 검색한다.|
+| 3 | 조건에 해당하는 재료의 상태값을 'Expired(폐기)'로 변경한다. |
+| 4 | 화면 목록에서 해당 재료들이 빨간색 강조와 함께 최상단에 노출되면 해당 use case는 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 유통기한이 지난 재료가 하나도 존재하지 않을 경우<br/r> ...2a1. 시스템은 별도의 폐기 경고 없이 날짜순으로 목록을 정렬하여 출력한다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <0.5 seconds |
+| Frequency | 시스템 접속 시마다 백그라운드에서 실행 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #11 : Add Memo
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 식재료에 대해 사용자가 별도로 기록하고 싶은 특이사항이나 부가 정보를 저장하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 특정 식재료의 상세 정보 화면이나 등록/수정 화면이 열려 있어야 한다. |
+| Trigger | 사용자가 '메모' 입력란을 터치하여 텍스트를 입력할 경우 |
+| Success Post Conditon| 입력된 메모 내용이 해당 식재료 데이터와 함께 서버에 안전하게 저장된다. |
+| Failed Post Condition | 입력 도중 취소하거나 앱이 강제 종료될 경우 작성 중이던 내용은 저장되지 않는다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 식재료에 추가 정보를 기록하기 위해 메모란을 선택한다. |
+| 1 | 이 User case는 사용자가 메모 입력 영역에 텍스트를 작성할 때 시작된다. |
+| 2 | 사용자는 재료의 활용법, 구매처 등의 정보를 자유롭게 기술한다. |
+| 3 | 시스템은 사용자가 '저장' 또는 '완료' 버튼을 누르면 해당 텍스트를 DB에 업데이트한다. |
+| 4 | 이 User case는 상세 화면에서 저장된 메모 내용이 정상적으로 조회되면 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 입력된 메모의 길이가 시스템이 허용하는 최대 글자 수를 초과한 경우<br/r> ...2a1. 시스템은 글자 수 제한 알림을 띄우고 더 이상의 입력을 제한한다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <2 seconds |
+| Frequency | 상세한 관리가 필요한 재료에 대해 간헐적 발 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #12 : Set Storage Location
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 식재료를 냉장실 혹은 냉동실 중 어디에 보관할지 장소를 지정하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 식재료 등록 또는 수정 화면이 활성화되어 있어야 한다. |
+| Trigger | 사용자가 위치 선택 옵션을 클릭할 경우 |
+| Success Post Conditon| 선택한 보관 위치 정보가 데이터베이스에 저장되어 관리된다. |
+| Failed Post Condition | 위치를 선택하지 않을 경우 시스템 기본 설정값(예: 냉장)으로 저장된다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 식재료의 보관 장소를 결정한다. |
+| 1 | 사용자가 화면에 제시된 '냉장' 혹은 '냉동' 옵션 중 하나를 선택한다. |
+| 2 | 시스템은 선택된 위치 정보를 해당 식재료 데이터의 위치 속성에 할당한다. |
+| 3 | 이 User case는 사용자가 등록/수정을 완료하여 위치 정보가 저장되면 끝난다.. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 1 | 1a. 사용자가 아무런 위치도 선택하지 않고 저장을 시도할 경우<br/r> ...1a1. 시스템은 사용자의 편의를 위해 자동으로 '냉장'을 기본값으로 설정하여 저장한다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <1 seconds |
+| Frequency | 식재료 등록 시 매번 발생 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
 #### 3. Domain analysis
 1) User
 사용자에 관련된 클래스이다. 시스템 접속을 위한 계정 정보와 사용자 이름을 관리하는 클래스이다.
