@@ -39,11 +39,14 @@
 #### 2. Use case analysis
 1. Use case diagram
 <img width="1240" height="1183" alt="스크린샷 2026-04-30 151452" src="https://github.com/user-attachments/assets/ba557071-2370-4946-91e4-20b7592a20b1" />
+
 Conceptualization 보고서에서 작성했던 Use case list를 바탕으로 그려진 Use case diagram으로, starUML을 이용하여 액터(User)가 시스템의 12가지 주요 기능들에 어떤 식으로 접근하고, 각 Use case들이 상호작용하는 관계를 구체적으로 지정하였다. 특히 식재료 등록, 수정, 삭제 및 유통기한 자동 판별 기능을 중심으로 사용자의 관리 흐름을 시각화하였다.
 
+
 2. Use case description
-| :--- |
+
 Use case #1 : Login
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -69,17 +72,17 @@ MAIN SUCCESS SCENARIO
 | 4 | 이 User case는 사용자가 메인 목록 화면 진입에 성공하면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 3 | 3a. 계정 정보가 틀리거나 네트워크 오류 시 접속에 실패한다.<br/r> ...3a1. "아이디 또는 비밀번호를 확인해주세요" 문구를 보여준다.<br/r> ...3a2. 다시 로그인을 시도한다.(Use case #1 재실행) |
+| 3 | 3a. 계정 정보가 틀리거나 네트워크 오류 시 접속에 실패한다. |
+|   | ...3a1. "아이디 또는 비밀번호를 확인해주세요" 문구를 보여준다. |
+|   | ...3a2. 다시 로그인을 시도한다.(Use case #1 재실행) |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <5 seconds |
 | Frequency | 앱 실행 시마다 발생 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #2 : Register Ingerdient
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -105,17 +108,17 @@ MAIN SUCCESS SCENARIO
 | 4 | 이 User case는 사용자가 등록된 재료를 확인하면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 3 | 3a. 필수 입력값 누락 시 등록 실패<br/r> ...3a1. 누락된 항목을 입력하라는 알림창 보여주기<br/r> ...3a2. 사용자는 다시 입력을 시도한다.(Use case #2 재실행) |
+| 3 | 3a. 필수 입력값 누락 시 등록 실패 |
+|   | ...3a1. 누락된 항목을 입력하라는 알림창 보여주기 |
+|   | ...3a2. 사용자는 다시 입력을 시도한다.(Use case #2 재실행) |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <3 seconds |
 | Frequency | 식재료 새로 구매 시 발생 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #3 : Delete Ingerdient
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -141,17 +144,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 이 User case는 목록 화면이 갱신되어 삭제된 항목이 보이지 않으면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 사용자가 확인 팝업에서 '취소'를 선택한다.<br/r> ...2a1. 시스템은 삭제 처리를 중단하고 이전 화면으로 돌아간다. |
+| 2 | 2a. 사용자가 확인 팝업에서 '취소'를 선택한다. |
+|   | ...2a1. 시스템은 삭제 처리를 중단하고 이전 화면으로 돌아간다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 식재료를 다 썼을 때나 버릴 때 발생 (frequent) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #4 : Edit Quantity
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -176,17 +178,16 @@ MAIN SUCCESS SCENARIO
 | 3 | 시스템은 실시간으로 변경된 수치를 데이터베이스에 업데이트하고 화면에 표시한다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 사용자가 수량을 0미만으로 줄이려고 시도한다.<br/r> ...2a1. 시스템은 수량이 0보다 작을 수 없다는 안내를 하거나 버튼을 비활성화 시킨다. |
+| 2 | 2a. 사용자가 수량을 0미만으로 줄이려고 시도한다. |
+|   | ...2a1. 시스템은 수량이 0보다 작을 수 없다는 안내를 하거나 버튼을 비활성화 시킨다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 식재료를 일부 사용 시 혹은 추가로 넣을 시 발생 (frequent) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #5 : View All List
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -211,17 +212,16 @@ MAIN SUCCESS SCENARIO
 | 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 & 출력 |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 데이터 베이스에 등록된 식재료가 하나도 없을 경우<br/r> ...2a1. 시스템은 "보관 중인 재료가 없습니다"라는 문구와 함께 비어있는 화면을 보여준다. |
+| 2 | 2a. 데이터 베이스에 등록된 식재료가 하나도 없을 경우 |
+|   | ...2a1. 시스템은 "보관 중인 재료가 없습니다"라는 문구와 함께 비어있는 화면을 보여준다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <2 seconds |
 | Frequency | 앱 이용 시 가장 빈번하게 발생(always) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #6 : Search by Name
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -247,17 +247,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 이 User case는 사용자가 원하는 재료를 찾아낼 시 종료 |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 입력한 검색어와 일치하는 식재료가 목록에 없는 경우<br/r> ...2a1. 시스템은 "검색 결과가 없습니다"라는 메시지를 화면에 표시한다. |
+| 2 | 2a. 입력한 검색어와 일치하는 식재료가 목록에 없는 경우 |
+|   | ...2a1. 시스템은 "검색 결과가 없습니다"라는 메시지를 화면에 표시한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 저장된 재료가 많을 때 주로 발생(frequent) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #7 : Category Filter
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -283,17 +282,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 사용자가 카테고리별로 분류된 목록을 확인하면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 선택한 카테고리에 속한 식재료가 현재 냉장고에 하나도 없는 경우<br/r> ...2a1. 시스템은 "해당 카테고리에 등록된 재료가 없습니다"라고 표시한다. |
+| 2 | 2a. 선택한 카테고리에 속한 식재료가 현재 냉장고에 하나도 없는 경우 |
+|   | ...2a1. 시스템은 "해당 카테고리에 등록된 재료가 없습니다"라고 표시한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 특정 용도의 재료를 찾을 때 자주 발생 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #8 : Set Expiration Date
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -319,17 +317,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 선택된 날짜가 화면에 표시되고 데이터로 확정되면 해당 use case는 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 3 | 3a. 사용자가 현재 이전의 날짜(이미 지난 날짜)를 선택하려고 할 경우<br/r> ...3a1. 시스템은 "이미 지난 날짜입니다. 다시 확인해주세요"라는 경고 메시지를 띄운다. |
+| 3 | 3a. 사용자가 현재 이전의 날짜(이미 지난 날짜)를 선택하려고 할 경우 |
+|   | ...3a1. 시스템은 "이미 지난 날짜입니다. 다시 확인해주세요"라는 경고 메시지를 띄운다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 모든 식재료 등록 시 반드시 발생 (high) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #9 : Exp. Date Warning
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -355,17 +352,16 @@ MAIN SUCCESS SCENARIO
 | 4 | User case 9번은 목록 출력 시 해당 재료들을 강조하면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 3 | 3a. 등록된 모든 식재료의 유통기한이 3일보다 많이 남았을 경우<br/r> ...2a1. 시스템은 별도의 경고 표시 없이 일반적인 목록을 화면에 구성한다. |
+| 3 | 3a. 등록된 모든 식재료의 유통기한이 3일보다 많이 남았을 경우 |
+|   | ...2a1. 시스템은 별도의 경고 표시 없이 일반적인 목록을 화면에 구성한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <0.5 seconds |
 | Frequency | 메인 화면을 볼 때마다 백그라운드에서 실 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #10 : Identify Expired Item
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -391,17 +387,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 화면 목록에서 해당 재료들이 빨간색 강조와 함께 최상단에 노출되면 해당 use case는 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 유통기한이 지난 재료가 하나도 존재하지 않을 경우<br/r> ...2a1. 시스템은 별도의 폐기 경고 없이 날짜순으로 목록을 정렬하여 출력한다. |
+| 2 | 2a. 유통기한이 지난 재료가 하나도 존재하지 않을 경우 |
+|   | ...2a1. 시스템은 별도의 폐기 경고 없이 날짜순으로 목록을 정렬하여 출력한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <0.5 seconds |
 | Frequency | 시스템 접속 시마다 백그라운드에서 실행 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #11 : Add Memo
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -427,17 +422,16 @@ MAIN SUCCESS SCENARIO
 | 4 | 이 User case는 상세 화면에서 저장된 메모 내용이 정상적으로 조회되면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 2 | 2a. 입력된 메모의 길이가 시스템이 허용하는 최대 글자 수를 초과한 경우<br/r> ...2a1. 시스템은 글자 수 제한 알림을 띄우고 더 이상의 입력을 제한한다. |
+| 2 | 2a. 입력된 메모의 길이가 시스템이 허용하는 최대 글자 수를 초과한 경우 |
+|   | ..2a1. 시스템은 글자 수 제한 알림을 띄우고 더 이상의 입력을 제한한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <2 seconds |
 | Frequency | 상세한 관리가 필요한 재료에 대해 간헐적 발 |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
 Use case #12 : Set Storage Location
+
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
@@ -462,11 +456,9 @@ MAIN SUCCESS SCENARIO
 | 3 | 이 User case는 사용자가 등록/수정을 완료하여 위치 정보가 저장되면 끝난다.. |
 EXTENSION SCENARIOS
 | step | Branching Action |
-| :--- | :--- |
-| 1 | 1a. 사용자가 아무런 위치도 선택하지 않고 저장을 시도할 경우<br/r> ...1a1. 시스템은 사용자의 편의를 위해 자동으로 '냉장'을 기본값으로 설정하여 저장한다. |
+| 1 | 1a. 사용자가 아무런 위치도 선택하지 않고 저장을 시도할 경우 |
+|   | ...1a1. 시스템은 사용자의 편의를 위해 자동으로 '냉장'을 기본값으로 설정하여 저장한다. |
 RELATED INFORMATION
-| Term | Description |
-| :--- | :---|
 | Performance | <1 seconds |
 | Frequency | 식재료 등록 시 매번 발생 |
 | <Concurrency> | 제한 없음 |
@@ -492,6 +484,26 @@ RELATED INFORMATION
 부가 정보를 관리하는 클래스이다. 식재료에 대해 사용자가 별도로 기록한 메모 내용을 저장하고 있는 클래스이다.
 
 #### 4. User Interface prototype
+1) Login
+<img width="832" height="1256" alt="스크린샷 2026-04-29 110759" src="https://github.com/user-attachments/assets/b05595f5-2c74-456f-803d-6eda0f95cca8" />
+
+2) view all list & Exp. Date Warning & Identify Expired Item
+<img width="885" height="1292" alt="스크린샷 2026-05-08 033100" src="https://github.com/user-attachments/assets/be5b4add-e5c1-416d-acb7-c257a3db4aaa" />
+
+3) Search by name
+<img width="896" height="1318" alt="스크린샷 2026-05-08 032958" src="https://github.com/user-attachments/assets/9ef3e37b-0a50-45a1-8b55-5043ee5fa41d" />
+
+4) category filter
+<img width="881" height="1292" alt="스크린샷 2026-05-08 033953" src="https://github.com/user-attachments/assets/d222f4e2-d1f2-4cde-8741-17ecd3278c76" />
+
+5) 재료 등록
+<img width="926" height="1307" alt="스크린샷 2026-05-08 032901" src="https://github.com/user-attachments/assets/55770d2d-df2f-493d-8591-8826a33766ff" />
+
+
+6) 재료 내용 수정
+<img width="860" height="1298" alt="스크린샷 2026-04-29 155855" src="https://github.com/user-attachments/assets/5fbf4f5a-f364-4c60-9e84-de493ac09a7f" />
+
+
 #### 5. Glossary
 | Term | Description |
 | :--- | :--- |
