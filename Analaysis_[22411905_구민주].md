@@ -487,22 +487,32 @@ RELATED INFORMATION
 1) Login
 <img width="400" height="600" alt="스크린샷 2026-04-29 110759" src="https://github.com/user-attachments/assets/b05595f5-2c74-456f-803d-6eda0f95cca8" />
 
-2) view all list & Exp. Date Warning & Identify Expired Item
+Login Screen: 사용자 인증을 위한 초기 화면입니다. 시스템의 정체성을 담은 캐릭터와 함께 심플한 로그인 폼을 제공합니다. use case의 1번 기능을 보여줍니다.
+
+2) 메인 대시보드
 <img width="400" height="600" alt="스크린샷 2026-05-08 033100" src="https://github.com/user-attachments/assets/be5b4add-e5c1-416d-acb7-c257a3db4aaa" />
+
+통합 재고 리스트: 사용자가 등록한 모든 식재료를 한눈에 파악할 수 있는 메인 대시보드. 시스템 날짜와 연동하여 유통기한 임박 재료는 노란색(D-3)으로, 만료된 재료는 빨간색(폐기)으로 상태를 즉각 표시하여 사용자의 빠른 의사결정을 돕습니다. use case의 5,9,10의 기능들을 한 번에 보여줍니다.
 
 3) Search by name
 <img width="400" height="600" alt="스크린샷 2026-05-08 032958" src="https://github.com/user-attachments/assets/9ef3e37b-0a50-45a1-8b55-5043ee5fa41d" />
 
-4) category filter
+실시간 이름 검색: 상단에 상시 노출되는 검색바를 통해 식재료의 양이 많아져도 이름의 일부만 입력하여 원하는 데이터를 실시간으로 필터링할 수 있도록 설계했습니다. use case의 6번 기능을 보여줍니다.
+
+4) Category filter
 <img width="400" height="600" alt="스크린샷 2026-05-08 033953" src="https://github.com/user-attachments/assets/d222f4e2-d1f2-4cde-8741-17ecd3278c76" />
 
-5) 재료 등록
+카테고리 분류 필터: 채소, 육류, 유제품 등 아이콘 기반의 카테고리 탭을 제공합니다. 사용자는 터치 한 번으로 특정 그룹의 식재료만 선별하여 조회할 수 있어 냉장고 관리가 효율적입니다.
+
+5) Registration
 <img width="400" height="600" alt="스크린샷 2026-05-08 032901" src="https://github.com/user-attachments/assets/55770d2d-df2f-493d-8591-8826a33766ff" />
 
+다중 속성 등록 화면: 식재료명 입력부터 위치(냉장/냉동) 선택, 캘린더 위젯을 통한 정밀한 유통기한 설정이 가능합니다. 수량 조절 버튼을 배치하여 오타 없이 빠르게 수치를 입력할 수 있도록 인터페이스를 구성했습니다. use case 2,8,12번을 한눈에 확인해 기능할 수 있습니다.
 
-6) 재료 내용 수정
-<img width="860" height="1298" alt="스크린샷 2026-04-29 155855" src="https://github.com/user-attachments/assets/5fbf4f5a-f364-4c60-9e84-de493ac09a7f" />
+6) Detail Management
+<img width="400" height="600" alt="스크린샷 2026-04-29 155855" src="https://github.com/user-attachments/assets/5fbf4f5a-f364-4c60-9e84-de493ac09a7f" />
 
+상세 정보 및 편집 관리: 등록된 재료를 클릭하면 나타나는 화면으로, 보관 장소와 유통기한을 재확인할 수 있습니다. 텍스트 메모 기능을 통해 보관 팁이나 구매처 등을 기록할 수 있으며, 하단의 삭제 버튼을 통해 간편하게 재고를 정리할 수 있습니다. use case 3,4,11번의 기능을 수행합니다.
 
 #### 5. Glossary
 | Term | Description |
