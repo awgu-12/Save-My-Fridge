@@ -37,8 +37,117 @@
 각 기능들을 구체적으로 분석하여 명확하게 정의할 것이다. 또한, 유통기한 관리, 재료 등록 및 수정 등의 기능을 실제로 구현하기 위해 필요한 핵심 클래스들을 도출하고 데이터 간의 관계를 분석하는 것을 목표로 한다.
 
 #### 2. Use case analysis
+1. Use case diagram
 <img width="1240" height="1183" alt="스크린샷 2026-04-30 151452" src="https://github.com/user-attachments/assets/ba557071-2370-4946-91e4-20b7592a20b1" />
 Conceptualization 보고서에서 작성했던 Use case list를 바탕으로 그려진 Use case diagram으로, starUML을 이용하여 액터(User)가 시스템의 12가지 주요 기능들에 어떤 식으로 접근하고, 각 Use case들이 상호작용하는 관계를 구체적으로 지정하였다. 특히 식재료 등록, 수정, 삭제 및 유통기한 자동 판별 기능을 중심으로 사용자의 관리 흐름을 시각화하였다.
+
+2. Use case description
+| :--- |
+Use case #1 : Login
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 사용자가 시스템을 이용하기 위해 신원 확인하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 앱이 실행되어 고르인 화면 활성화된 상태 |
+| Trigger | 앱 초기 화면에서 아이디/비밀번호 입력 후 로그인 버튼을 누를 경우 |
+| Success Post Conditon| 계정 정보 일치 시 인증 성공하고 메인 목록 화면으로 진입 |
+| Failed Post Condition | 계정 정보가 일치하지 않거나 오프라인 상태일 경우 로그인이 실패한다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 로그인 서버에 인증을 요청한다. |
+| 1 | 이 User case는 사용자가 아이디와 비밀번호를 입력할 때 시작된다. |
+| 2 | 사용자는 로그인 버튼을 누른다. |
+| 3 | 사용자 계정이 존재하고 정보가 일치하면 시스템에 접속한다. |
+| 4 | 이 User case는 사용자가 메인 목록 화면 진입에 성공하면 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 3 | 3a. 계정 정보가 틀리거나 네트워크 오류 시 접속에 실패한다.<br/r> ...3a1. "아이디 또는 비밀번호를 확인해주세요" 문구를 보여준다.<br/r> ...3a2. 다시 로그인을 시도한다.(Use case #1 재실행) |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <5 seconds |
+| Frequency | 앱 실행 시마다 발생 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #2 : Register Ingerdient
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 사용자가 새로운 식재료 정보를 시스템에 등록하기 위한 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 사용자가 로그인 후 메인 화면에 접속한 상황이어야 한다. |
+| Trigger | 사용자가 식재료 추가 버튼을 누를 경우 |
+| Success Post Conditon| 데이터베이스에 정보가 저장되고 목록 화면에 즉시 반영된다. |
+| Failed Post Condition | 필수 정보 누락 시 저장 실패하고 경고 메세지를 보여준다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 식재료 추가 버튼을 누른다 |
+| 1 | 이 User case는 사용자가 추가 버튼(+)을 클릭할 때 시작된다. |
+| 2 | 사용자는 재료명, 유통기한, 수량 등의 정보를 입력한다. |
+| 3 | 시스템은 입력된 데이터의 유효성을 검사한 후 서버에 저장한다. |
+| 4 | 이 User case는 사용자가 등록된 재료를 확인하면 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 3 | 3a. 필수 입력값 누락 시 등록 실패<br/r> ...3a1. 누락된 항목을 입력하라는 알림창 보여주기<br/r> ...3a2. 사용자는 다시 입력을 시도한다.(Use case #2 재실행) |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <3 seconds |
+| Frequency | 식재료 새로 구매 시 발생 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #3 : Delete Ingerdient
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 사용자가 새로운 식재료 정보를 시스템에 등록하기 위한 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 사용자가 로그인 후 메인 화면에 접속한 상황이어야 한다. |
+| Trigger | 사용자가 식재료 추가 버튼을 누를 경우 |
+| Success Post Conditon| 데이터베이스에 정보가 저장되고 목록 화면에 즉시 반영된다. |
+| Failed Post Condition | 필수 정보 누락 시 저장 실패하고 경고 메세지를 보여준다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 식재료 추가 버튼을 누른다 |
+| 1 | 이 User case는 사용자가 추가 버튼(+)을 클릭할 때 시작된다. |
+| 2 | 사용자는 재료명, 유통기한, 수량 등의 정보를 입력한다. |
+| 3 | 시스템은 입력된 데이터의 유효성을 검사한 후 서버에 저장한다. |
+| 4 | 이 User case는 사용자가 등록된 재료를 확인하면 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 3 | 3a. 필수 입력값 누락 시 등록 실패<br/r> ...3a1. 누락된 항목을 입력하라는 알림창 보여주기<br/r> ...3a2. 사용자는 다시 입력을 시도한다.(Use case #2 재실행) |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <3 seconds |
+| Frequency | 식재료 새로 구매 시 발생 |
+| <Concurrency> | 제한 없음 |
+| Due Date |
 
 #### 3. Domain analysis
 1) User
