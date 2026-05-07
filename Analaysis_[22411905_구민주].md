@@ -87,6 +87,7 @@ GENERAL CHARACTERISTICS
 | Scope | Refrigerator Management System (RMS) |
 | Level | User level |
 | Author | 구민주 | 
+| Last Update | 2026-05-07 |
 | Status | Analysis |
 | Primary Actor | User |
 | Preconditions | 사용자가 로그인 후 메인 화면에 접속한 상황이어야 한다. |
@@ -97,7 +98,7 @@ GENERAL CHARACTERISTICS
 MAIN SUCCESS SCENARIO
 | step | Action |
 | :--- | :--- |
-| s | 사용자가 식재료 추가 버튼을 누른다 |
+| s | 사용자가 식재료 추가 버튼을 누른다. |
 | 1 | 이 User case는 사용자가 추가 버튼(+)을 클릭할 때 시작된다. |
 | 2 | 사용자는 재료명, 유통기한, 수량 등의 정보를 입력한다. |
 | 3 | 시스템은 입력된 데이터의 유효성을 검사한 후 서버에 저장한다. |
@@ -118,34 +119,143 @@ Use case #3 : Delete Ingerdient
 GENERAL CHARACTERISTICS
 | Term | Description |
 | :--- | :---|
-| Summary | 사용자가 새로운 식재료 정보를 시스템에 등록하기 위한 기능 |
+| Summary | 소비 완료하거나 폐기할 재료를 목록에서 제거하는 기 |
 | Scope | Refrigerator Management System (RMS) |
 | Level | User level |
 | Author | 구민주 | 
+| Last Update | 2026-05-07 |
 | Status | Analysis |
 | Primary Actor | User |
-| Preconditions | 사용자가 로그인 후 메인 화면에 접속한 상황이어야 한다. |
-| Trigger | 사용자가 식재료 추가 버튼을 누를 경우 |
-| Success Post Conditon| 데이터베이스에 정보가 저장되고 목록 화면에 즉시 반영된다. |
-| Failed Post Condition | 필수 정보 누락 시 저장 실패하고 경고 메세지를 보여준다. |
+| Preconditions | 삭제하고자 하는 식재료가 목록에 존재해야한다. |
+| Trigger | 사용자가 식재료 상세 정보 또는 목록에서 '삭제' 버튼을 누를 경우 |
+| Success Post Conditon| 데이터베이스에서 해당 식재료 정보가 삭제되고 목록에서 사라진다. |
+| Failed Post Condition | 삭제 확인 팝업에서 취소를 누를 경우 기존 상태를 유지한다. |
 
 MAIN SUCCESS SCENARIO
 | step | Action |
 | :--- | :--- |
-| s | 사용자가 식재료 추가 버튼을 누른다 |
-| 1 | 이 User case는 사용자가 추가 버튼(+)을 클릭할 때 시작된다. |
-| 2 | 사용자는 재료명, 유통기한, 수량 등의 정보를 입력한다. |
-| 3 | 시스템은 입력된 데이터의 유효성을 검사한 후 서버에 저장한다. |
-| 4 | 이 User case는 사용자가 등록된 재료를 확인하면 끝난다. |
+| s | 사용자가 특정 식재료의 삭제 버튼을 누른다. |
+| 1 | 이 User case는 사용자가 삭제 명령을 내릴 때 시작된. |
+| 2 | 시스템은 사용자에게 정말로 삭제할 것인지 묻는 확인 팝업을 띄운다. |
+| 3 | 사용자가 '확인'을 선택하면 시스템은 해당 데이터를 영구 삭제한다. |
+| 4 | 이 User case는 목록 화면이 갱신되어 삭제된 항목이 보이지 않으면 끝난다. |
 EXTENSION SCENARIOS
 | step | Branching Action |
 | :--- | :--- |
-| 3 | 3a. 필수 입력값 누락 시 등록 실패<br/r> ...3a1. 누락된 항목을 입력하라는 알림창 보여주기<br/r> ...3a2. 사용자는 다시 입력을 시도한다.(Use case #2 재실행) |
+| 2 | 2a. 사용자가 확인 팝업에서 '취소'를 선택한다.<br/r> ...2a1. 시스템은 삭제 처리를 중단하고 이전 화면으로 돌아간다. |
 RELATED INFORMATION
 | Term | Description |
 | :--- | :---|
-| Performance | <3 seconds |
-| Frequency | 식재료 새로 구매 시 발생 |
+| Performance | <1 seconds |
+| Frequency | 식재료를 다 썼을 때나 버릴 때 발생 (frequent) |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #4 : Edit Quantity
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 등록된 식재료의 보관 수량을 늘리거나 줄여서 업데이트하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 수량을 수정할 식재료가 목록에 등록되어 있어야 한다. |
+| Trigger | 사용자가 식재료 리스트 또는 상세 화면에서 수량 조절(+/-) 버튼을 누를 경우 |
+| Success Post Conditon| 변경된 수량이 데이터베이스에 즉시 저장되고 화면에 반영된다. |
+| Failed Post Condition | 네트워크 오류 등으로 저장에 실패할 경우 이전 수량으로 복구된다. |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 수량 조절 버튼을 누른다. |
+| 1 | 이 User case는 사용자가 사용자가 특정 재료의 수량을 변경하고자 할 때 시작되다 . |
+| 2 | 사용자는 증감 버튼을 통해 원하는 수량으로 조절한다. |
+| 3 | 시스템은 실시간으로 변경된 수치를 데이터베이스에 업데이트한다. |
+| 4 | 화면에 수정된 수량이 정확히 표시되면 use case는 끝난다. |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 사용자가 수량을 0미만으로 줄이려고 시도한다.<br/r> ...2a1. 시스템은 수량이 0보다 작을 수 없다는 안내를 하거나 버튼을 비활성화 시킨다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <1 seconds |
+| Frequency | 식재료를 일부 사용 시 혹은 추가로 넣을 시 발생 (frequent) |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #5 : View All List
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 현재 냉장고에 보관 중인 모든 식재료의 목록을 한눈에 확인하는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 사용자가 로그인에 성공하여 메인 시스템에 접속한 상태일 것. |
+| Trigger | 로그인 직후 or '목록'아이콘을 클릭할 경우 |
+| Success Post Conditon| 데이터베이스의 최신 식재료 데이터를 불러와 화면에 리스트 형식으로 출력 |
+| Failed Post Condition | 데이터를 불러오는데 실패할 시 네트워크 오류 메시지 출력 |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 메인 목록 화면 요청 |
+| 1 | 사용자가 시스테므이 메인 화면에 접속 시 해당 use case 시작 |
+| 2 | 시스템은 서버로부터 해당 사용자의 전체 식재료 데이터를 요청 |
+| 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 |
+| 4 | 전체 리스트를 사용자가 확인 가능할 때 해당 use case 종료 |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 데이터 베이스에 등록된 식재료가 하나도 없을 경우<br/r> ...2a1. 시스템은 "보관 중인 재료가 없습니다"라는 문구와 함께 비어있는 화면을 보여준다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <2 seconds |
+| Frequency | 앱 이용 시 가장 빈번하게 발생(always) |
+| <Concurrency> | 제한 없음 |
+| Due Date |
+
+Use case #6 : Search by Name
+GENERAL CHARACTERISTICS
+| Term | Description |
+| :--- | :---|
+| Summary | 사용자가 검색어를 입력하여 특정 식재료를 빠르게 찾는 기능 |
+| Scope | Refrigerator Management System (RMS) |
+| Level | User level |
+| Author | 구민주 | 
+| Last Update | 2026-05-07 |
+| Status | Analysis |
+| Primary Actor | User |
+| Preconditions | 메인 목록 화면에 접속 상태. |
+| Trigger | 사용자가 상단 검색창에 텍스트 입력 시 |
+| Success Post Conditon| 입력한 검색어가 포함된 식재료들만 화면에 필터링되어 나타난다. |
+| Failed Post Condition | 검색 결과가 없을 경우 해당 내용을 사용자에게 알린다 |
+
+MAIN SUCCESS SCENARIO
+| step | Action |
+| :--- | :--- |
+| s | 사용자가 메인 목록 화면 요청 |
+| 1 | 사용자가 시스테므이 메인 화면에 접속 시 해당 use case 시작 |
+| 2 | 시스템은 서버로부터 해당 사용자의 전체 식재료 데이터를 요청 |
+| 3 | 시스템은 받아온 정보를 이름, 유통기한, 수량 등 정해진 형식에 맞춰 나열 |
+| 4 | 전체 리스트를 사용자가 확인 가능할 때 해당 use case 종료 |
+EXTENSION SCENARIOS
+| step | Branching Action |
+| :--- | :--- |
+| 2 | 2a. 데이터 베이스에 등록된 식재료가 하나도 없을 경우<br/r> ...2a1. 시스템은 "보관 중인 재료가 없습니다"라는 문구와 함께 비어있는 화면을 보여준다. |
+RELATED INFORMATION
+| Term | Description |
+| :--- | :---|
+| Performance | <2 seconds |
+| Frequency | 앱 이용 시 가장 빈번하게 발생(always) |
 | <Concurrency> | 제한 없음 |
 | Due Date |
 
