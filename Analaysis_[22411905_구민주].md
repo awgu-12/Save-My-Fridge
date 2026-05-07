@@ -504,7 +504,7 @@ RELATED INFORMATION
 | 재고목록 | 사용자가 등록하여 현재 시스템에 저장되어 있는 모든 식재료 데이터 |
 | 메 | 특정 식재료에 대해 사용자가 추가로 기록한 정보 |
 
-#### 6.. References
+#### 6. References
 사용자, 보관 위치, 유통기한 — <https://www.foodsafetykorea.go.kr/>
 식재료, 재고 목록 - <https://www.naqs.go.kr/hp/main/main.do>
 Android Developers Documentation (UI Components) — <https://developer.android.com/docs>
